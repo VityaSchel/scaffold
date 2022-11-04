@@ -45,7 +45,7 @@ export default async function scaffold(projectName: string): Promise<string> {
   await fs.writeFile(dirPath + 'LICENSE.md', licenseMarkdownText, 'utf-8')
   await fs.writeFile(dirPath + 'tsconfig.json', JSON.stringify(tsconfigJson, null, 2), 'utf-8')
   await fs.writeFile(dirPath + 'jest.config.js', jestConfig, 'utf-8')
-  await fs.writeFile(dirPath + 'babel.config.js', babelConfig, 'utf-8')
+  await fs.writeFile(dirPath + 'babel.config.cjs', babelConfig, 'utf-8')
 
   await fs.mkdir(dirPath + '.vscode')
   await fs.writeFile(dirPath + '.vscode/settings.json', JSON.stringify(vscodeSettingsConfig, null, 2), 'utf-8')
@@ -67,5 +67,5 @@ export default async function scaffold(projectName: string): Promise<string> {
 
   console.log(chalk.green('Готово!'))
 
-  return `${dirPath}${projectName}/`
+  return `${dirPath}/`
 }

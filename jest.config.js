@@ -2,9 +2,7 @@
 export default {
   preset: 'ts-jest/presets/default-esm',
   globals: {
-    'ts-jest': {
-      useESM: true,
-    },
+    'ts-jest': {},
   },
   testEnvironment: 'node',
   collectCoverage: true,
@@ -12,10 +10,7 @@ export default {
   coveragePathIgnorePatterns: ['node_modules', 'src/database', 'src/test', 'src/types'],
   transformIgnorePatterns: ['node_modules/(?!chalk)/.+\\.js', 'node_modules/(?!#ansi-styles)/'],
   transform: {
-    '^.+\\.(j|t)sx?$': 'babel-jest',
-    '^.+\\.tsx?$': [
-      'ts-jest',
-    ],
+    '^.+\\.(j|t)sx?$': 'babel-jest'
   },
   moduleNameMapper: {
     '#(.*)': '<rootDir>/node_modules/$1'

@@ -9,7 +9,7 @@
     "build": "ttsc",
     "postbuild": "cpy '**/*' '!**/*.ts' '../out' --cwd=src --no-overwrite --parents",
     "set": "npm run build && npm remove -g && npm i -g",
-    "test": "jest"
+    "test": "jest -i"
   },
   "bin": {
     "sf": "out/cli.js"
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",
+    "@babel/preset-typescript": "^7.18.6",
     "@types/jest": "^29.2.1",
     "@types/package-name-regex": "^2.0.0",
     "@types/prompts": "^2.4.1",
