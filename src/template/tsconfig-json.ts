@@ -16,6 +16,7 @@ export default {
     ],
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "strict": true
   },
   "include": [
     "src/**/*.ts"
