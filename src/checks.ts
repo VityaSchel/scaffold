@@ -26,7 +26,7 @@ export async function init(projectName: string): Promise<string> {
   } else {
     path = `./${projectName}/`
   }
-  path = pathlib.resolve(process.cwd(), path)
+  path = pathlib.resolve(process.cwd(), path) + '/'
 
   let files: string[] = []
   try {

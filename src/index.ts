@@ -62,10 +62,10 @@ export default async function scaffold(projectName: string): Promise<string> {
     await new Promise(resolve => process.on('exit', resolve))
   }
 
-  await runSubProcess('git i', { cwd: dirPath })
+  await runSubProcess('git init', { cwd: dirPath })
   await runSubProcess('npm i', { cwd: dirPath })
 
   console.log(chalk.green('Готово!'))
 
-  return dirPath
+  return `${dirPath}${projectName}/`
 }
