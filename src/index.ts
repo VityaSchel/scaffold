@@ -1,6 +1,11 @@
 #! /usr/bin/env node
 import { init } from './checks'
 import fs from 'fs/promises'
+import chalk from 'chalk'
+import prompts from 'prompts'
+import packageNameRegex from 'package-name-regex'
+import { exec, ExecOptions } from 'child_process'
+
 import * as packageJsonDefaults from './template/package-json'
 import gitignoreLines from './template/gitignore'
 import eslintConfig from './template/eslint-cjs'
@@ -9,8 +14,10 @@ import vscodeSettingsConfig from './template/vscode-settings-json'
 import tsconfigJson from './template/tsconfig-json'
 import jestConfig from './template/jest-config-js'
 
-const projectName = process.argv[2]
+const projectName = process.argv[2] ?? (await prompts({ type: 'text', name: 'value', message: 'Название будушего шедевра', validate: value => !packageNameRegex.test(value) ? 'Невалидное название' : true })).value
 const dirPath = await init(projectName)
+
+console.log(chalk.green('Генерируются файлы...'))
 
 const packageJSON = {
   name: projectName,
@@ -31,7 +38,7 @@ await fs.mkdir(dirPath + 'out')
 
 await fs.writeFile(dirPath + 'src/index.ts', '', 'utf-8')
 await fs.writeFile(dirPath + '.gitignore', gitignoreLines.join('\n'), 'utf-8')
-await fs.writeFile(dirPath + '.eslint.cjs', eslintConfig, 'utf-8')
+await fs.writeFile(dirPath + '.eslintrc.cjs', eslintConfig, 'utf-8')
 await fs.writeFile(dirPath + 'LICENSE.md', licenseMarkdownText, 'utf-8')
 await fs.writeFile(dirPath + 'tsconfig.json', JSON.stringify(tsconfigJson, null, 2), 'utf-8')
 await fs.writeFile(dirPath + 'jest.config.js', jestConfig, 'utf-8')
@@ -41,3 +48,19 @@ await fs.writeFile(dirPath + '.vscode/settings.json', JSON.stringify(vscodeSetti
 
 await fs.mkdir(dirPath + 'test')
 await fs.writeFile(dirPath + 'test/index.test.ts', '', 'utf-8')
+
+console.log(chalk.green('Установка зависимостей...'))
+
+const runSubProcess = async (command: string, option: ExecOptions) => {
+
+}
+
+await runSubProcess()
+const gitInitProcess = exec('git init', { cwd: dirPath })
+const npmInstallProcess = exec('npm i', { cwd: dirPath })
+npmInstallProcess.stderr.on('data', err => console.error(err.toString()))
+npmInstallProcess.stdout.on('data', msg => console.log(msg.toString()))
+
+await new Promise(resolve => npmInstallProcess.on('exit', resolve))
+
+console.log(chalk.green('Готово!'))

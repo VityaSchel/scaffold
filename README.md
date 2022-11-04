@@ -9,6 +9,7 @@ I think there is a better alternatives to some things I use here, so suggest me 
   - Currently is done using external `@zoltu/typescript-transformer-append-js-extension` plugin with `ttypescript`
 - Build replacing process
   - Currently ./out dir is removed via external `del-cli` package and then files are copied via `cpy-cli` which may pose threat with security vulnerabilities. Maybe change to native commands such as `rm` and `cp`?
+- Add support for Yarn when installing dependencies
 
 ## Tool usage
 
