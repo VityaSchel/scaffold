@@ -5,7 +5,7 @@ export default {
   collectCoverage: true,
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: ['node_modules', 'src/database', 'src/test', 'src/types'],
-  testPathIgnorePatterns: ['<rootDir>/node_modules/node-fetch', '<rootDir>/dist/'],
+  testPathIgnorePatterns: ['<rootDir>/node_modules/node-fetch', '<rootDir>/node_modules/chalk', '<rootDir>/dist/'],
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
     '^.+\\.(ts|tsx)?$': [

@@ -20,6 +20,8 @@ export const devDependencies = {
   "@types/jest": "^29.2.0",
   "@zoltu/typescript-transformer-append-js-extension": "^1.0.1",
   "ts-jest": "^29.0.3",
+  "babel-jest": "^29.2.2",
+  "@babel/preset-env": "^7.19.4",
 }
 
 export const author = 'Viktor Shchelochkov <hi@hloth.dev> (https://hloth.dev/)'

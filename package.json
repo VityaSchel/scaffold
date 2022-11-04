@@ -28,11 +28,13 @@
     "typescript": "^4.8.3"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.19.4",
     "@types/jest": "^29.2.1",
     "@types/package-name-regex": "^2.0.0",
     "@types/prompts": "^2.4.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
+    "babel-jest": "^29.2.2",
     "eslint": "^8.26.0",
     "ts-jest": "^29.0.3"
   }
