@@ -67,5 +67,5 @@ export default async function scaffold(projectName: string): Promise<string> {
 
   console.log(chalk.green('Готово!'))
 
-  return `${dirPath}/`
+  return dirPath
 }

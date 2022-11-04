@@ -3,8 +3,6 @@ import scaffold from '../out/index'
 import path from 'path'
 import { exec } from 'child_process'
 
-type Test = 'alias'
-
 const simpleProgram = `export function sum(a: number, b: number): number {
   return a + b
 }
@@ -35,7 +33,7 @@ describe('Testing CLI', () => {
     fs.writeFile(dirPath + 'test/index.test.ts', simpleTest, 'utf-8')
 
     const testingProcess = exec('npm test', { cwd: dirPath })
-    testingProcess.stderr?.on('data', err => console.error(err.toString()))
+    testingProcess.stderr?.on('data', err => console.log(err.toString()))
     testingProcess.stdout?.on('data', msg => console.log(msg.toString()))
     await new Promise(resolve => testingProcess.on('exit', resolve))
     expect(testingProcess.exitCode).toBe(0)
