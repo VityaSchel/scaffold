@@ -8,10 +8,11 @@
     "prebuild": "del out/",
     "build": "ttsc",
     "postbuild": "cpy '**/*' '!**/*.ts' '../out' --cwd=src --no-overwrite --parents",
-    "set": "npm run build && npm remove -g && npm i -g"
+    "set": "npm run build && npm remove -g && npm i -g",
+    "test": "jest"
   },
   "bin": {
-    "sf": "out/index.js"
+    "sf": "out/cli.js"
   },
   "author": "vityaschel <hi@hloth.dev> (https://hloth.dev/)",
   "license": "MIT",
@@ -27,10 +28,12 @@
     "typescript": "^4.8.3"
   },
   "devDependencies": {
+    "@types/jest": "^29.2.1",
     "@types/package-name-regex": "^2.0.0",
     "@types/prompts": "^2.4.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
-    "eslint": "^8.26.0"
+    "eslint": "^8.26.0",
+    "ts-jest": "^29.0.3"
   }
 }

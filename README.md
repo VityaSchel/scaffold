@@ -1,6 +1,8 @@
 # Scaffold
 
-NPX tool for me to easily scaffold new project, containing TypeScript config for modern ES, eslint with my favorite code style and Jest tests with ts support
+NPX tool for me to easily scaffold new project, containing TypeScript config for modern ES, eslint with my favorite code style and Jest tests with TS support.
+
+Moreover, this tool was scaffolded with itself! It tests itself automatically with Jest after each build by creating simple test project and testing Jest with Jest's test.
 
 This project is mostly for demonstrating which defaults I use, it is not intended to be used by anyone, simply because everyone has it's own preferences, so don't judge me for using X here. Though I'm still accepting any criticism that may help me improve this setup to work faster and better :)
 

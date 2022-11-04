@@ -17,6 +17,7 @@ export const devDependencies = {
   "@types/node": "^18.7.18",
   "@typescript-eslint/eslint-plugin": "^5.38.0",
   "@typescript-eslint/parser": "^5.38.0",
+  "@types/jest": "^29.2.0",
   "@zoltu/typescript-transformer-append-js-extension": "^1.0.1",
   "ts-jest": "^29.0.3",
 }

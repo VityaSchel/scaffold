@@ -4,7 +4,6 @@ import packageNameRegex from 'package-name-regex'
 import pathlib from 'path'
 
 /**
- * /**
  * Runs checks, then initializes project directory 
  * @param projectName process.argv[2]
  * @returns Path to created dir with trailing slash
@@ -27,6 +26,7 @@ export async function init(projectName: string): Promise<string> {
   } else {
     path = `./${projectName}/`
   }
+  path = pathlib.resolve(process.cwd(), path)
 
   let files: string[] = []
   try {
