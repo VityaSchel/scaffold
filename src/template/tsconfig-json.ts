@@ -16,7 +16,9 @@ export default {
     ],
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "strict": true
+    "strict": true,
+    "noImplicitAny": false,
+    "useUnknownInCatchVariables": false
   },
   "include": [
     "src/**/*.ts"
