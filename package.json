@@ -1,0 +1,34 @@
+{
+  "name": "scaffold",
+  "version": "1.0.0",
+  "description": "NPX tool for me to easily scaffold new project, containing TypeScript config for modern ES, eslint with my favorite code style and Jest tests with ts support",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "prebuild": "del out/",
+    "build": "ttsc",
+    "postbuild": "cpy '**/*' '!**/*.ts' '../out' --cwd=src --no-overwrite --parents",
+    "set": "npm run build && npm remove -g && npm i -g"
+  },
+  "bin": {
+    "sf": "out/index.js"
+  },
+  "author": "vityaschel <hi@hloth.dev> (https://hloth.dev/)",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^18.7.18",
+    "@zoltu/typescript-transformer-append-js-extension": "^1.0.1",
+    "chalk": "^5.1.2",
+    "cpy-cli": "^3.1.1",
+    "del-cli": "^4.0.1",
+    "package-name-regex": "^2.0.6",
+    "ttypescript": "^1.5.13",
+    "typescript": "^4.8.3"
+  },
+  "devDependencies": {
+    "@types/package-name-regex": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0"
+  }
+}
