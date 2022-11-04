@@ -30,17 +30,22 @@ git clone https://github.com/VityaSchel/scaffold && cd scaffold && npm i && npm 
 ### Project structure
 
 ```
-/
-├─ package.json
-├─ package-lock.json
-├─ .eslint.cjs
-├─ .gitignore
-├─ LICENSE.md
-├─ .vscode/
-│  ├─ .vscode/settings.json
+.
+├── src
+│   └── index.ts
+├── out
+├── test
+│   └── index.test.ts
+├── babel.config.cjs
+├── jest.config.js
+├── tsconfig.json
+├── LICENSE.md
+├── package.json
+└── package-lock.json
 ```
 
 ### Scripts
 
 Build: `npm run build`
 Run: `npm start` or `node out/index.js`
+Test (with TypeScript): `npm test`
