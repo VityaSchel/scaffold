@@ -11,6 +11,7 @@ import vscodeSettingsConfig from './template/vscode-settings-json'
 import tsconfigJson from './template/tsconfig-json'
 import jestConfig from './template/jest-config-js'
 import babelConfig from './template/babel-config-js'
+import envLoader from './template/env-ts'
 
 /**
  * Scaffold a project
@@ -39,7 +40,9 @@ export default async function scaffold(projectName: string): Promise<string> {
   await fs.mkdir(dirPath + 'src')
   await fs.mkdir(dirPath + 'out')
 
-  await fs.writeFile(dirPath + 'src/index.ts', '', 'utf-8')
+  await fs.writeFile(dirPath + 'src/index.ts', 'import \'./.env\'\n', 'utf-8')
+  await fs.writeFile(dirPath + 'src/.env.ts', envLoader, 'utf-8')
+  await fs.writeFile(dirPath + '.env', '', 'utf-8')
   await fs.writeFile(dirPath + '.gitignore', gitignoreLines.join('\n'), 'utf-8')
   await fs.writeFile(dirPath + '.eslintrc.cjs', eslintConfig, 'utf-8')
   await fs.writeFile(dirPath + 'LICENSE.md', licenseMarkdownText, 'utf-8')

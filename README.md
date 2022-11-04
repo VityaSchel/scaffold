@@ -32,10 +32,12 @@ git clone https://github.com/VityaSchel/scaffold && cd scaffold && npm i && npm 
 ```
 .
 ├── src
+│   ├── .env.ts
 │   └── index.ts
 ├── out
 ├── test
 │   └── index.test.ts
+├── .env
 ├── babel.config.cjs
 ├── jest.config.js
 ├── tsconfig.json
