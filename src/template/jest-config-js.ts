@@ -1,16 +1,24 @@
 export default `/** @type {import('ts-jest').JestConfigWithTsJest} */
 export default {
-  preset: 'ts-jest',
+  preset: 'ts-jest/presets/default-esm',
+  globals: {
+    'ts-jest': {
+      useESM: true,
+    },
+  },
   testEnvironment: 'node',
   collectCoverage: true,
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: ['node_modules', 'src/database', 'src/test', 'src/types'],
-  testPathIgnorePatterns: ['<rootDir>/node_modules/node-fetch', '<rootDir>/dist/'],
+  transformIgnorePatterns: ['node_modules/(?!chalk)/.+\\.js', 'node_modules/(?!#ansi-styles)/'],
   transform: {
-    '^.+\\.(js|jsx)$': 'babel-jest',
-    '^.+\\.(ts|tsx)?$': [
+    '^.+\\.(j|t)sx?$': 'babel-jest',
+    '^.+\\.tsx?$': [
       'ts-jest',
     ],
+  },
+  moduleNameMapper: {
+    '#(.*)': '<rootDir>/node_modules/$1'
   }
 }
 `

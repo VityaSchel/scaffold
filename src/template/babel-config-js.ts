@@ -1,1 +1,14 @@
-export default 'module.exports = {presets: [\'@babel/preset-env\']}'
+export default `module.exports = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        targets: {
+          esmodules: false,
+          node: 'current'
+        }
+      }
+    ]
+  ]
+}
+`
