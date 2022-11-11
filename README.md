@@ -6,6 +6,8 @@ Moreover, this tool was scaffolded with itself! It tests itself automatically wi
 
 This project is mostly for demonstrating which defaults I use, it is not intended to be used by anyone, simply because everyone has it's own preferences, so don't judge me for using X here. Though I'm still accepting any criticism that may help me improve this setup to work faster and better :)
 
+**Size of generated project is just 142 MB with all dependencies**
+
 I think there is a better alternatives to some things I use here, so suggest me alternative tools in the Issues tab if you know:
 - Append .js extension to imports during build
   - Currently is done using external `@zoltu/typescript-transformer-append-js-extension` plugin with `ttypescript`
