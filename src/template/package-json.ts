@@ -8,6 +8,10 @@ export const scripts = {
   "test": "jest"
 }
 
+export const dependencies = {
+  "dotenv": "^16.0.0"
+}
+
 export const devDependencies = {
   "cpy-cli": "^3.1.1",
   "del-cli": "^4.0.1",

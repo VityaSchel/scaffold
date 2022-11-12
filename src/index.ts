@@ -32,7 +32,7 @@ export default async function scaffold(projectName: string): Promise<string> {
     scripts: packageJsonDefaults.scripts,
     author: packageJsonDefaults.author,
     license: 'MIT',
-    dependencies: {},
+    dependencies: packageJsonDefaults.dependencies,
     devDependencies: packageJsonDefaults.devDependencies
   }
   await fs.writeFile(dirPath + 'package.json', JSON.stringify(packageJSON, null, 2), 'utf-8')
