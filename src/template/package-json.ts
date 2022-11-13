@@ -13,7 +13,7 @@ export const dependencies = {
 }
 
 export const devDependencies = {
-  "cpy-cli": "^3.1.1",
+  "cpy-cli": "^4.2.0",
   "del-cli": "^4.0.1",
   "eslint": "^8.8.0",
   "ttypescript": "^1.5.13",
