@@ -18,7 +18,8 @@ export default {
     "esModuleInterop": true,
     "strict": true,
     "noImplicitAny": false,
-    "useUnknownInCatchVariables": false
+    "useUnknownInCatchVariables": false,
+    "declaration": true
   },
   "include": [
     "src/**/*.ts"
