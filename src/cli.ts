@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 import prompts from 'prompts'
 import packageNameRegex from 'package-name-regex'
-import scaffold from './index'
+import scaffold from './index.js'
 
 const projectName = process.argv[2] ?? (
   await prompts({ 

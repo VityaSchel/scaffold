@@ -9,10 +9,10 @@ This project is mostly for demonstrating which defaults I use, it is not intende
 **Size of generated project is just 142 MB with all dependencies**
 
 I think there is a better alternatives to some things I use here, so suggest me alternative tools in the Issues tab if you know:
-- Append .js extension to imports during build
-  - Currently is done using external `@zoltu/typescript-transformer-append-js-extension` plugin with `ttypescript`
-- Build replacing process
-  - Currently ./out dir is removed via external `del-cli` package and then files are copied via `cpy-cli` which may pose threat with security vulnerabilities. Maybe change to native commands such as `rm` and `cp`?
+- ~~Append .js extension to imports during build~~
+  - ~~Currently is done using external `@zoltu/typescript-transformer-append-js-extension` plugin with `ttypescript`~~
+- ~~Build replacing process~~
+  - ~~Currently ./out dir is removed via external `del-cli` package and then files are copied via `cpy-cli` which may pose threat with security vulnerabilities. Maybe change to native commands such as `rm` and `cp`?~~
 - Add support for Yarn when installing dependencies
 
 ## Tool usage
@@ -43,6 +43,7 @@ git clone https://github.com/VityaSchel/scaffold && cd scaffold && npm i && npm 
 ├── babel.config.cjs
 ├── jest.config.js
 ├── tsconfig.json
+├── .swcrc
 ├── LICENSE.md
 ├── package.json
 └── package-lock.json
@@ -53,3 +54,7 @@ git clone https://github.com/VityaSchel/scaffold && cd scaffold && npm i && npm 
 Build: `npm run build`
 Run: `npm start` or `node out/index.js`
 Test (with TypeScript): `npm test`
+
+### Building
+
+Previusly building was done with ttsc which is a postprocessor for Typescript with plugins support. In v1.0.1 it was replaced with esbuild and then swc. swc was faster, so now we're using it.
