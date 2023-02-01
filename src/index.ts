@@ -41,8 +41,8 @@ export default async function scaffold(projectName: string): Promise<string> {
   await fs.mkdir(dirPath + 'src')
   await fs.mkdir(dirPath + 'out')
 
-  await fs.writeFile(dirPath + 'src/index.ts', 'import \'./.env\'\n', 'utf-8')
-  await fs.writeFile(dirPath + 'src/.env.ts', envLoader, 'utf-8')
+  await fs.writeFile(dirPath + 'src/index.ts', 'import \'./env.js\'\n', 'utf-8')
+  await fs.writeFile(dirPath + 'src/env.ts', envLoader, 'utf-8')
   await fs.writeFile(dirPath + '.env', '', 'utf-8')
   await fs.writeFile(dirPath + '.gitignore', gitignoreLines.join('\n'), 'utf-8')
   await fs.writeFile(dirPath + '.eslintrc.cjs', eslintConfig, 'utf-8')
