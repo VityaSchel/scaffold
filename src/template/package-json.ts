@@ -26,6 +26,7 @@ export const devDependencies = {
   "@babel/preset-typescript": "^7.18.6",
   "@swc/cli": "^0.1.57",
   "@swc/core": "^1.3.18",
+  "babel-helpers": "^6.24.1"
 }
 
 export const author = 'Viktor Shchelochkov <hi@hloth.dev> (https://hloth.dev/)'
