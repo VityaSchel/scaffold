@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 
 export const scripts = {
-  "prebuild": "del out/",
+  "prebuild": "rm -rf ./out/",
   "build": "swc ./src -d ./out --copy-files",
   "start": "node out/index.js",
   "test": "jest"
@@ -12,7 +12,6 @@ export const dependencies = {
 }
 
 export const devDependencies = {
-  "del-cli": "^4.0.1",
   "esbuild": "^0.15.14",
   "eslint": "^8.8.0",
   "typescript": "^4.8.3",
@@ -30,3 +29,4 @@ export const devDependencies = {
 }
 
 export const author = 'Viktor Shchelochkov <hi@hloth.dev> (https://hloth.dev/)'
+

@@ -1,6 +1,6 @@
 {
   "name": "@hloth/scaffold",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NPX tool for me to easily scaffold new project, containing TypeScript config for modern ES, eslint with my favorite code style and Jest tests with ts support",
   "main": "index.js",
   "type": "module",
@@ -8,7 +8,7 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "del out/",
+    "prebuild": "rm -rf ./out/",
     "build": "swc ./src -d ./out --copy-files",
     "set": "npm run build && npm remove -g && npm i -g",
     "test": "jest -i"
@@ -28,7 +28,6 @@
     "@babel/preset-typescript": "^7.18.6",
     "@swc/cli": "^0.1.57",
     "@swc/core": "^1.3.18",
-    "del-cli": "^4.0.1",
     "typescript": "^4.8.3",
     "@types/node": "^18.7.18",
     "@types/jest": "^29.2.1",
