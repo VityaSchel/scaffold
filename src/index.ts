@@ -40,9 +40,11 @@ export default async function scaffold(projectName: string): Promise<string> {
 
   await fs.mkdir(dirPath + 'src')
   await fs.mkdir(dirPath + 'out')
+  await fs.mkdir(dirPath + 'types')
 
   await fs.writeFile(dirPath + 'src/index.ts', 'import \'./env.js\'\n', 'utf-8')
   await fs.writeFile(dirPath + 'src/env.ts', envLoader, 'utf-8')
+  await fs.writeFile(dirPath + 'types/fetch.d.ts', '// eslint-disable-next-line no-var\ndeclare var fetch: typeof import(\'undici\').fetch', 'utf-8')
   await fs.writeFile(dirPath + '.env', '', 'utf-8')
   await fs.writeFile(dirPath + '.gitignore', gitignoreLines.join('\n'), 'utf-8')
   await fs.writeFile(dirPath + '.eslintrc.cjs', eslintConfig, 'utf-8')
@@ -68,7 +70,7 @@ export default async function scaffold(projectName: string): Promise<string> {
   }
 
   await runSubProcess('git init', { cwd: dirPath })
-  await runSubProcess('npm i', { cwd: dirPath })
+  await runSubProcess('pnpm i', { cwd: dirPath })
 
   console.log(chalk.green('Готово!'))
 
