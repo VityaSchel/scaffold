@@ -4,7 +4,10 @@ export default {
     'parser': {
       'syntax': 'typescript'
     },
-    'target': 'es2017'
+    'target': 'es2017',
+    'paths': {
+      '@/*': ['src/*']
+    }
   },
   'minify': true
 }

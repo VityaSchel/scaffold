@@ -19,7 +19,13 @@ export default {
     "strict": true,
     "noImplicitAny": false,
     "useUnknownInCatchVariables": false,
-    "declaration": true
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts"

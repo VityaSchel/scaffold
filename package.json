@@ -1,6 +1,6 @@
 {
   "name": "@hloth/scaffold",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NPX tool for me to easily scaffold new project, containing TypeScript config for modern ES, eslint with my favorite code style and Jest tests with ts support",
   "main": "index.js",
   "type": "module",
