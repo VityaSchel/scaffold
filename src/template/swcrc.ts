@@ -5,6 +5,7 @@ export default {
       'syntax': 'typescript'
     },
     'target': 'es2017',
+    'baseUrl': '.',
     'paths': {
       '@/*': ['src/*']
     }
