@@ -2,6 +2,8 @@ import { init } from './checks.js'
 import fs from 'fs/promises'
 import chalk from 'chalk'
 import { exec, ExecOptions } from 'child_process'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 import * as packageJsonDefaults from './template/package-json.js'
 import gitignoreLines from './template/gitignore.js'
@@ -13,6 +15,8 @@ import jestConfig from './template/jest-config-js.js'
 import babelConfig from './template/babel-config-js.js'
 import envLoader from './template/env-ts.js'
 import swcrc from './template/swcrc.js'
+
+const __dirname = dirname(fileURLToPath(import.meta.url)) + '/'
 
 /**
  * Scaffold a project
@@ -53,6 +57,7 @@ export default async function scaffold(projectName: string): Promise<string> {
   await fs.writeFile(dirPath + 'jest.config.js', jestConfig, 'utf-8')
   await fs.writeFile(dirPath + 'babel.config.cjs', babelConfig, 'utf-8')
   await fs.writeFile(dirPath + '.swcrc', JSON.stringify(swcrc, null, 2), 'utf-8')
+  await fs.writeFile(dirPath + 'loader.js', await fs.readFile(__dirname + '../src/templates/loader.js', 'utf-8'), 'utf-8')
 
   await fs.mkdir(dirPath + '.vscode')
   await fs.writeFile(dirPath + '.vscode/settings.json', JSON.stringify(vscodeSettingsConfig, null, 2), 'utf-8')

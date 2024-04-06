@@ -1,9 +1,8 @@
 /* eslint-disable quotes */
 
 export const scripts = {
-  "prebuild": "rm -rf ./out/",
-  "build": "swc ./src -d ./out --copy-files",
-  "start": "node out/index.js",
+  "build": "rm -rf ./out/ && swc ./src -d ./out --copy-files && tsc --emitDeclarationOnly",
+  "start": "node --loader ./loader.js out/index.js",
   "test": "jest"
 }
 
