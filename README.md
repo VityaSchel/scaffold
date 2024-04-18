@@ -18,7 +18,7 @@ I think there is a better alternatives to some things I use here, so suggest me 
 ## Tool usage
 
 ```
-npx @hloth/scaffold project-name
+npx @hloth/scaffold project-name --tests
 ```
 
 or

@@ -2,8 +2,7 @@
 
 export const scripts = {
   "build": "rm -rf ./out/ && swc ./src -d ./out --copy-files && tsc --emitDeclarationOnly",
-  "start": "node --loader ./loader.js out/index.js",
-  "test": "jest"
+  "start": "node --loader ./loader.js out/index.js"
 }
 
 export const dependencies = {
@@ -11,6 +10,17 @@ export const dependencies = {
 }
 
 export const devDependencies = {
+  "eslint": "^8.8.0",
+  "typescript": "^5.1.6",
+  "@types/node": "^18.17.0",
+  "@typescript-eslint/eslint-plugin": "^5.38.0",
+  "@typescript-eslint/parser": "^5.38.0",
+  "@swc/cli": "^0.1.57",
+  "@swc/core": "^1.3.18",
+  "undici": "^5.23.0"
+}
+
+export const devDependenciesWithTests = {
   "esbuild": "^0.15.14",
   "eslint": "^8.8.0",
   "typescript": "^5.1.6",

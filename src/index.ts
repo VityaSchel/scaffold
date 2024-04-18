@@ -23,7 +23,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url)) + '/'
  * @param projectName Valid npm name for the project
  * @returns Path to the project's dir
  */
-export default async function scaffold(projectName: string): Promise<string> {
+export default async function scaffold(projectName: string, addTests: boolean): Promise<string> {
   const dirPath = await init(projectName)
 
   console.log(chalk.green('Генерируются файлы...'))
@@ -34,36 +34,41 @@ export default async function scaffold(projectName: string): Promise<string> {
     description: '',
     main: 'out/index.js',
     type: 'module',
-    scripts: packageJsonDefaults.scripts,
+    scripts: {
+      ...packageJsonDefaults.scripts,
+      ...(addTests && { test: 'jest' })
+    },
     author: packageJsonDefaults.author,
     license: 'MIT',
     dependencies: packageJsonDefaults.dependencies,
-    devDependencies: packageJsonDefaults.devDependencies
+    devDependencies: addTests 
+      ? packageJsonDefaults.devDependenciesWithTests 
+      : packageJsonDefaults.devDependencies
   }
   await fs.writeFile(dirPath + 'package.json', JSON.stringify(packageJSON, null, 2), 'utf-8')
 
   await fs.mkdir(dirPath + 'src')
   await fs.mkdir(dirPath + 'out')
-  await fs.mkdir(dirPath + 'types')
+  addTests && await fs.mkdir(dirPath + 'types')
 
   await fs.writeFile(dirPath + 'src/index.ts', 'import \'./env.js\'\n', 'utf-8')
   await fs.writeFile(dirPath + 'src/env.ts', envLoader, 'utf-8')
-  await fs.writeFile(dirPath + 'types/fetch.d.ts', '// eslint-disable-next-line no-var\ndeclare var fetch: typeof import(\'undici\').fetch', 'utf-8')
+  addTests && await fs.writeFile(dirPath + 'types/fetch.d.ts', '// eslint-disable-next-line no-var\ndeclare var fetch: typeof import(\'undici\').fetch', 'utf-8')
   await fs.writeFile(dirPath + '.env', '', 'utf-8')
   await fs.writeFile(dirPath + '.gitignore', gitignoreLines.join('\n'), 'utf-8')
   await fs.writeFile(dirPath + '.eslintrc.cjs', eslintConfig, 'utf-8')
   await fs.writeFile(dirPath + 'LICENSE.md', licenseMarkdownText, 'utf-8')
   await fs.writeFile(dirPath + 'tsconfig.json', JSON.stringify(tsconfigJson, null, 2), 'utf-8')
-  await fs.writeFile(dirPath + 'jest.config.js', jestConfig, 'utf-8')
-  await fs.writeFile(dirPath + 'babel.config.cjs', babelConfig, 'utf-8')
+  addTests && await fs.writeFile(dirPath + 'jest.config.js', jestConfig, 'utf-8')
+  addTests && await fs.writeFile(dirPath + 'babel.config.cjs', babelConfig, 'utf-8')
   await fs.writeFile(dirPath + '.swcrc', JSON.stringify(swcrc, null, 2), 'utf-8')
-  await fs.writeFile(dirPath + 'loader.js', await fs.readFile(__dirname + '../src/templates/loader.js', 'utf-8'), 'utf-8')
+  await fs.writeFile(dirPath + 'loader.js', await fs.readFile(__dirname + '../src/template/loader.js', 'utf-8'), 'utf-8')
 
   await fs.mkdir(dirPath + '.vscode')
   await fs.writeFile(dirPath + '.vscode/settings.json', JSON.stringify(vscodeSettingsConfig, null, 2), 'utf-8')
 
-  await fs.mkdir(dirPath + 'test')
-  await fs.writeFile(dirPath + 'test/index.test.ts', '', 'utf-8')
+  addTests && await fs.mkdir(dirPath + 'test')
+  addTests && await fs.writeFile(dirPath + 'test/index.test.ts', '', 'utf-8')
 
   console.log(chalk.green('Установка зависимостей...'))
 
@@ -75,7 +80,7 @@ export default async function scaffold(projectName: string): Promise<string> {
   }
 
   await runSubProcess('git init', { cwd: dirPath })
-  await runSubProcess('pnpm i', { cwd: dirPath })
+  await runSubProcess('bun install', { cwd: dirPath })
 
   console.log(chalk.green('Готово!'))
 

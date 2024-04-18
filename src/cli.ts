@@ -3,12 +3,25 @@ import prompts from 'prompts'
 import packageNameRegex from 'package-name-regex'
 import scaffold from './index.js'
 
-const projectName = process.argv[2] ?? (
-  await prompts({ 
-    type: 'text', 
-    name: 'value', 
-    message: 'Название будушего шедевра', 
-    validate: value => !packageNameRegex.test(value) ? 'Невалидное название' : true 
-  })).value
+let projectName = process.argv[2]
+let addTests = process.argv[3] === '--tests' || process.argv[3] === '--add-tests'
 
-await scaffold(projectName)
+if(!projectName) {
+  const values = await prompts([
+    { 
+      type: 'text', 
+      name: 'value', 
+      message: 'Название будушего шедевра', 
+      validate: value => !packageNameRegex.test(value) ? 'Невалидное название' : true 
+    },
+    {
+      type: 'select', 
+      name: 'tests', 
+      message: 'Добавить тесты',
+    },
+  ])
+  projectName = values.value
+  addTests = values.tests
+}
+
+await scaffold(projectName, addTests)
